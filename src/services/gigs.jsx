@@ -3,3 +3,4 @@ export const getGigs = async () => {
     console.log('|||GIGS|||', res);
     return res.json();
 }
+
