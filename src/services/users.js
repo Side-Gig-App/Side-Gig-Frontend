@@ -9,6 +9,11 @@ export const getCurrentUser = async () => {
         return null;
     }
 };
+
+export const signUp = async ({ email, password }) => {
+    
+}
+
 // username or password here?
 export const signIn = async ({ email, password}) => {
     const res = await fetch(`${process.env.API_URL}/api/v1/users`, {

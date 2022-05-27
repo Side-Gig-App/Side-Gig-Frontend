@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useAuth, useCurentUser } from '../../context/UserProvider'
+import { useAuth, useCurrentUser } from '../../context/UserProvider'
 
 
 export default function Authenticate(){
@@ -8,7 +8,7 @@ export default function Authenticate(){
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const history = useHistory();
-    const user = useCurentUser();
+    const user = useCurrentUser();
     const { login } = useAuth();
 
    const handleSubmit = async (e) => {
@@ -34,30 +34,53 @@ export default function Authenticate(){
    };
 
    return(
-       <form onSubmit={handleSubmit}>
+    <><form onSubmit={handleSubmit}>
            <label aria-label='email'>Email: </label>
            <input
-            id='email'
-            type='text'
-            placeholder='email'
-            value={email}
-            onChange={({ target }) => setEmail(target.value)} />
+               id='email'
+               type='text'
+               placeholder='email'
+               value={email}
+               onChange={({ target }) => setEmail(target.value)} />
 
-            <label aria-label='password'>Password: </label>
-            <input
-                id='password'
-                type='password'
-                placeholder='password'
-                value={password}
-                onChange={({ target }) => setPassword(target.value)} />
+           <label aria-label='password'>Password: </label>
+           <input
+               id='password'
+               type='password'
+               placeholder='password'
+               value={password}
+               onChange={({ target }) => setPassword(target.value)} />
 
-                <button
-                    type='submit'
-                    aria-label='submit-button'
-                    onClick={handleClick}>
-                        Sign In
-                    </button>
-       </form>
+           <button
+               type='submit'
+               aria-label='submit-button'
+               onClick={handleClick}>
+               Sign In
+           </button>
+       </form><form onSubmit={handleSubmit}>
+               <label aria-label='email'>Email: </label>
+               <input
+                   id='email'
+                   type='text'
+                   placeholder='email'
+                   value={email}
+                   onChange={({ target }) => setEmail(target.value)} />
+
+               <label aria-label='password'>Password: </label>
+               <input
+                   id='password'
+                   type='password'
+                   placeholder='password'
+                   value={password}
+                   onChange={({ target }) => setPassword(target.value)} />
+
+               <button
+                   type='submit'
+                   aria-label='submit-button'
+                   onClick={handleClick}>
+                   Sign Up
+               </button>
+           </form></>
    )
 
 }

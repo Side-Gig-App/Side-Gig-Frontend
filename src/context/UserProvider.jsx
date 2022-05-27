@@ -1,5 +1,6 @@
-import { createContext, useCallback, useEffect, useMemo, useState } from "react";
+import { createContext, useCallback, useEffect, useMemo, useState, useContext } from "react";
 import { getCurrentUser, signIn, signOut } from "../services/users";
+
 
 const UserContext = createContext();
 
@@ -21,20 +22,20 @@ export const UserProvider = ({ children }) => {
         signOut().then(() => setUser(null));
     }, []);
 
-    useEffect(() => {
-        getCurrentUser()
-          .then(setUser)
-          .finally(() => setLoading(false));
-    }, []);
+    // useEffect(() => {
+    //     getCurrentUser()
+    //       .then(setUser)
+    //       .finally(() => setLoading(false));
+    // }, []);
 
-    const state = useMemo(
-        () => ({ loading, user, logout, login }),
-        [loading, user, logout, login]
-    );
+    // const state = useMemo(
+    //     () => ({ loading, user, logout, login }),
+    //     [loading, user, logout, login]
+    // );
 
     return (
-        <UserContext.Provider value={state}>
-            {renderView({ ...state, children })}
+        <UserContext.Provider value={{ login, logout }}>
+            { children }
         </UserContext.Provider>
     );
 };
