@@ -11,12 +11,22 @@ export const getCurrentUser = async () => {
 };
 
 export const signUp = async ({ email, password }) => {
-    
+    const res = await fetch(`${process.env.API_URL}/api/v1/users/signup`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        mode: 'cors',
+        body: JSON.stringify({ email, password }),
+    });
+
+    if (!res.ok) throw new Error('Invalid Username or Password');
+
+    return res.json();
 }
 
 // username or password here?
 export const signIn = async ({ email, password}) => {
-    const res = await fetch(`${process.env.API_URL}/api/v1/users`, {
+    const res = await fetch(`${process.env.API_URL}/api/v1/users/signin`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',

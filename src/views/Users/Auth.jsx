@@ -6,10 +6,12 @@ import { useAuth, useCurrentUser } from '../../context/UserProvider'
 export default function Authenticate(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [email1, setEmail1] = useState('');
+    const [password1, setPassword1] = useState('');
     const [error, setError] = useState('');
     const history = useHistory();
     const user = useCurrentUser();
-    const { login } = useAuth();
+    const { login, signUpUser } = useAuth();
 
    const handleSubmit = async (e) => {
        try{
@@ -30,6 +32,28 @@ export default function Authenticate(){
        }else{
            setError('');
            handleSubmit(e)
+       }
+   };
+
+   const handleSignUp = async (e) => {
+       try{
+           e.preventDefault();
+           
+           await signUpUser({ email: email1, password: password1 });
+
+       }catch(error){
+           setError(error.message)
+       }
+   };
+
+   const handleClickForSignUp = (e) => {
+       e.preventDefault();
+
+       if (!email1 || !password1) {
+           setError('Enter valid username and Password')
+       }else{
+           setError('');
+           handleSignUp(e)
        }
    };
 
@@ -57,27 +81,28 @@ export default function Authenticate(){
                onClick={handleClick}>
                Sign In
            </button>
-       </form><form onSubmit={handleSubmit}>
-               <label aria-label='email'>Email: </label>
+       </form>
+       <form onSubmit={handleSignUp}>
+               <label aria-label='email1'>Email: </label>
                <input
-                   id='email'
+                   id='email1'
                    type='text'
                    placeholder='email'
-                   value={email}
-                   onChange={({ target }) => setEmail(target.value)} />
+                   value={email1}
+                   onChange={({ target }) => setEmail1(target.value)} />
 
-               <label aria-label='password'>Password: </label>
+               <label aria-label='password1'>Password: </label>
                <input
-                   id='password'
+                   id='password1'
                    type='password'
                    placeholder='password'
-                   value={password}
-                   onChange={({ target }) => setPassword(target.value)} />
+                   value={password1}
+                   onChange={({ target }) => setPassword1(target.value)} />
 
                <button
                    type='submit'
                    aria-label='submit-button'
-                   onClick={handleClick}>
+                   onClick={handleClickForSignUp}>
                    Sign Up
                </button>
            </form></>

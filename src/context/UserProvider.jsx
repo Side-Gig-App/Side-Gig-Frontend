@@ -1,5 +1,5 @@
 import { createContext, useCallback, useEffect, useMemo, useState, useContext } from "react";
-import { getCurrentUser, signIn, signOut } from "../services/users";
+import { getCurrentUser, signIn, signUp, signOut } from "../services/users";
 
 
 const UserContext = createContext();
@@ -12,6 +12,15 @@ export const UserProvider = ({ children }) => {
     const login = async (credentials) => {
         try {
             const user = await signIn(credentials);
+            setUser(user);
+        } catch (error) {
+            throw error;
+        }
+    };
+    
+    const signUpUser = async (credentials) => {
+        try {
+            const user = await signUp(credentials);
             setUser(user);
         } catch (error) {
             throw error;
@@ -34,7 +43,7 @@ export const UserProvider = ({ children }) => {
     // );
 
     return (
-        <UserContext.Provider value={{ login, logout }}>
+        <UserContext.Provider value={{ login, logout, signUpUser }}>
             { children }
         </UserContext.Provider>
     );
@@ -55,5 +64,5 @@ export const useAuth = () => {
     if ( context === undefined)
         throw new Error('useAuth mus be used in a userProvider')
 
-        return { logout: context.logout, login: context.login };
+        return { logout: context.logout, login: context.login , signUpUser: context.signUpUser};
 }
