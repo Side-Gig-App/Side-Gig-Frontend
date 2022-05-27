@@ -39,3 +39,20 @@ export const UserProvider = ({ children }) => {
     );
 };
 
+export const useCurrentUser = () => {
+    const context = useContext(UserContext);
+
+    if (context === undefined)
+        throw new Error('use current user must be use with UserProvider');
+
+        return context.user
+}
+
+export const useAuth = () => {
+    const context = useContext(UserContext);
+
+    if ( context === undefined)
+        throw new Error('useAuth mus be used in a userProvider')
+
+        return { logout: context.logout, login: context.login };
+}
