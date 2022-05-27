@@ -16,7 +16,7 @@ export default function GigsList() {
     return (
         <>
             {gigsArray.map((gig) => (
-                <ul key={gig.gig_id}><p>{gig.gig_name}</p><p>{gig.salary_hourly}</p></ul>
+                <ul key={gig.gig_id}><p>{gig.gig_name}</p><p>{gig.salary_hourly}</p><p>{gig.third_party_link}</p><button>More Info</button></ul>
             ))}
         </>
     )
