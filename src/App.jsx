@@ -3,6 +3,9 @@ import { Redirect, Route, Switch, BrowserRouter as Router } from 'react-router-d
 import { UserProvider } from './context/UserProvider';
 import GigsList from './components/Gigs/Gigs';
 import GigDetail from './components/Gigs/GigDetail';
+import FavoritesList from './components/Favorites/Favorites';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import GoalsList from './components/Goals/Goals';
 
 
 export default function App() {
@@ -13,12 +16,18 @@ export default function App() {
     <Route exact path='/login'>
       <Authenticate />
     </Route>
-    <Route path='/comparison'>
+    <PrivateRoute exact path='/comparison'>
       <GigsList />
-    </Route>
-    <Route exact path='/gigs/:id'>
+    </PrivateRoute>
+    <PrivateRoute exact path='/gigs/:id'>
       <GigDetail />
-    </Route>
+    </PrivateRoute>
+    <PrivateRoute exact path='/goals'>
+      <GoalsList />
+    </PrivateRoute>
+    <PrivateRoute exact path='/favorites'>
+      <FavoritesList />
+    </PrivateRoute>
     </Switch>
     </Router>
     </UserProvider>
