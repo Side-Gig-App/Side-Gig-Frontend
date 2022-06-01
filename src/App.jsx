@@ -5,6 +5,7 @@ import GigsList from './components/Gigs/Gigs';
 import GigDetail from './components/Gigs/GigDetail';
 import FavoritesList from './components/Favorites/Favorites';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import GoalsList from './components/Goals/Goals';
 
 
 export default function App() {
@@ -20,6 +21,9 @@ export default function App() {
     </PrivateRoute>
     <PrivateRoute exact path='/gigs/:id'>
       <GigDetail />
+    </PrivateRoute>
+    <PrivateRoute exact path='/goals'>
+      <GoalsList />
     </PrivateRoute>
     <PrivateRoute exact path='/favorites'>
       <FavoritesList />
