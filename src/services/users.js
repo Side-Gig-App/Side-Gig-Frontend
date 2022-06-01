@@ -48,3 +48,7 @@ export const signOut = async () => {
 
     return res.ok;
 };
+
+
+// after back is fix look into bug in maybe how user state is being set
+
