@@ -11,6 +11,7 @@ export const getCurrentUser = async () => {
 };
 
 export const signUp = async ({ email, password }) => {
+    console.log('sign up------')
     const res = await fetch(`${process.env.API_URL}/api/v1/users/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -25,7 +26,8 @@ export const signUp = async ({ email, password }) => {
 }
 
 // username or password here?
-export const signIn = async ({ email, password}) => {
+export const signIn = async ({ email, password }) => {
+    console.log('sign in ------function')
     const res = await fetch(`${process.env.API_URL}/api/v1/users/signin`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

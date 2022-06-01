@@ -6,15 +6,17 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(null);
     
     const login = async (credentials) => {
         try {
+            console.log('line 13-----')
             const user = await signIn(credentials);
+            console.log(credentials, 'credentials')
             console.log('USER||', user);
             setUser(user);
             const output = document.getElementById('cookies')
-            console.log(output);
+            console.log(output, 'output ------');
         } catch (error) {
             throw error;
         }
@@ -23,6 +25,7 @@ export const UserProvider = ({ children }) => {
     const signUpUser = async (credentials) => {
         try {
             const user = await signUp(credentials);
+            console.log(user, 'user signup function------')
             setUser(user);
         } catch (error) {
             throw error;
