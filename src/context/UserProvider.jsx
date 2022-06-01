@@ -6,13 +6,14 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState(null);
-
+    const [user, setUser] = useState(decodeURIComponent(document.cookie));
 
     const login = async (credentials) => {
         try {
             const user = await signIn(credentials);
             setUser(user);
+            const output = document.getElementById('cookies')
+            console.log(output);
         } catch (error) {
             throw error;
         }
