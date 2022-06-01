@@ -15,6 +15,24 @@ export default function GigsList() {
       }
     getGigsFromLoad();
     }, [])
+
+
+    async function favHandler(gigID) {
+        // console.log(e.target.value)
+        console.log(gigID);
+        const favClick = await fetch('http://localhost:7890/api/v1/favorites', {
+            method: 'PATCH',
+            body: JSON.stringify({
+              is_favorite: true,
+              gig_id: gigID
+            }),
+            headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+            },
+          })
+    }
+
+
     
     return (
         <>
@@ -23,6 +41,7 @@ export default function GigsList() {
                     <p>{gig.gig_name}</p>
                     <p>{gig.salary_hourly}</p>
                     <p>{gig.third_party_link}</p>
+                    <button onClick={() => favHandler(gig.gig_id)}>Add To Favorites</button>
                     <Link to={`/gigs/${gig.gig_id}`}>
                     <button>More Info</button>
                     </Link>

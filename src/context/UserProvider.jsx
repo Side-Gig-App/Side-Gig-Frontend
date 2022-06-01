@@ -6,7 +6,7 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState(decodeURIComponent(document.cookie));
+    const [user, setUser] = useState({});
     
     const login = async (credentials) => {
         try {
@@ -33,11 +33,11 @@ export const UserProvider = ({ children }) => {
         signOut().then(() => setUser(null));
     }, []);
 
-    // useEffect(() => {
-    //     getCurrentUser()
-    //       .then(setUser)
-    //       .finally(() => setLoading(false));
-    // }, []);
+    useEffect(() => {
+        getCurrentUser()
+          .then(setUser)
+          .finally(() => setLoading(false));
+    }, []);
 
     // const state = useMemo(
     //     () => ({ loading, user, logout, login }),

@@ -11,6 +11,7 @@ export default function FavoritesList() {
         }
     getFavoritesFromLoad();
     }, [])
+    
 console.log('favs', favorites);
     return (
         <>
