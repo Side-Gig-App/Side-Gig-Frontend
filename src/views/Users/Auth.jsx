@@ -16,8 +16,8 @@ export default function Authenticate(){
    const handleSubmit = async (e) => {
        try{
            e.preventDefault();
-           
-           await login({ email, password });
+           console.log('line 19 authjsx')
+           await login({ email: email, password: password });
 
        }catch(error){
            setError(error.message)
