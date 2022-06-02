@@ -1,11 +1,11 @@
 import { data } from '../utils/data';
 
+
 export const getCurrentUser = async () => {
     try {
         const res = await fetch(`${process.env.API_URL}/api/v1/users`, {
             credentials: 'include',
         });
-
         return res.json();
     } catch (error) {
         return null;
@@ -13,7 +13,6 @@ export const getCurrentUser = async () => {
 };
 
 export const signUp = async ({ email, password }) => {
-    console.log('sign up------')
     const res = await fetch(`${process.env.API_URL}/api/v1/users/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -21,7 +20,6 @@ export const signUp = async ({ email, password }) => {
         mode: 'cors',
         body: JSON.stringify({ email, password }),
     });
-
     if (!res.ok) throw new Error('Invalid Username or Password');
 
     return res.json();
