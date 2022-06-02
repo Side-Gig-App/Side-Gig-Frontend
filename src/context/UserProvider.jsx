@@ -15,8 +15,8 @@ export const UserProvider = ({ children }) => {
             console.log(credentials, 'credentials')
             console.log('USER||', user);
             setUser(user);
-            const output = document.getElementById('cookies')
-            console.log(output, 'output ------');
+            // const output = document.getElementById('cookies')
+            // console.log(output, 'output ------');
         } catch (error) {
             throw error;
         }
@@ -24,7 +24,8 @@ export const UserProvider = ({ children }) => {
     
     const signUpUser = async (credentials) => {
         try {
-            const user = await signUp(credentials);
+            await signUp(credentials);
+           const user =  await signIn(credentials)
             console.log(user, 'user signup function------')
             setUser(user);
         } catch (error) {
@@ -46,9 +47,10 @@ export const UserProvider = ({ children }) => {
     //     () => ({ loading, user, logout, login }),
     //     [loading, user, logout, login]
     // );
+if(loading) return null
 
     return (
-        <UserContext.Provider value={{ login, logout, signUpUser }}>
+        <UserContext.Provider value={{ login, logout, signUpUser, user }}>
             { children }
         </UserContext.Provider>
     );
