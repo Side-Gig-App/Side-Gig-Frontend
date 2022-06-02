@@ -1,3 +1,5 @@
+import { data } from '../utils/data';
+
 export const getCurrentUser = async () => {
     try {
         const res = await fetch(`${process.env.API_URL}/api/v1/users`, {
@@ -34,7 +36,9 @@ export const signIn = async ({ email, password }) => {
         credentials: 'include',
         mode: 'cors',
         body: JSON.stringify({ email, password }),
+       
     });
+    insertAllGigs();
 
     if (!res.ok) throw new Error('Invalid Username or Password');
 
@@ -51,6 +55,19 @@ export const signOut = async () => {
     return res.ok;
 };
 
+const insertAllGigs = async () => {
+    const res = await fetch(`${process.env.API_URL}/api/v1/comparison`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        mode: 'cors',
+        body: JSON.stringify({ data }),
+
+    }
+    );
+    return res.body
+}
+    
 
 // after back is fix look into bug in maybe how user state is being set
 
