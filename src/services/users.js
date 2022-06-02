@@ -1,11 +1,11 @@
 import { data } from '../utils/data';
 
+
 export const getCurrentUser = async () => {
     try {
         const res = await fetch(`${process.env.API_URL}/api/v1/users`, {
             credentials: 'include',
         });
-
         return res.json();
     } catch (error) {
         return null;
@@ -13,7 +13,6 @@ export const getCurrentUser = async () => {
 };
 
 export const signUp = async ({ email, password }) => {
-    console.log('sign up------')
     const res = await fetch(`${process.env.API_URL}/api/v1/users/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -21,7 +20,6 @@ export const signUp = async ({ email, password }) => {
         mode: 'cors',
         body: JSON.stringify({ email, password }),
     });
-
     if (!res.ok) throw new Error('Invalid Username or Password');
 
     return res.json();
@@ -38,8 +36,9 @@ export const signIn = async ({ email, password }) => {
         body: JSON.stringify({ email, password }),
        
     });
-    insertAllGigs();
-
+    let arr =[];
+    const arr1 = insertAllGigs();
+    arr.push(arr1)
     if (!res.ok) throw new Error('Invalid Username or Password');
 
     return res.json();
@@ -56,17 +55,20 @@ export const signOut = async () => {
 };
 
 const insertAllGigs = async () => {
-    const res = await fetch(`${process.env.API_URL}/api/v1/comparison`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        mode: 'cors',
-        body: JSON.stringify({ data }),
+    await Promise.all(data.map((gig) => {
 
-    }
-    );
-    return res.body
-}
+        const res = fetch(`${process.env.API_URL}/api/v1/comparison`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            mode: 'cors',
+            body: JSON.stringify(gig),
+    
+        }
+        );
+        return res.body
+    })
+)}
     
 
 // after back is fix look into bug in maybe how user state is being set

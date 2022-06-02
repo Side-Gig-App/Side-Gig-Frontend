@@ -7,10 +7,10 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
+    const [userEmail, setUserEmail] = useState('');
     
     const login = async (credentials) => {
         try {
-            console.log('line 13-----')
             const user = await signIn(credentials);
             console.log(credentials, 'credentials')
             console.log('USER||', user);
@@ -50,7 +50,7 @@ export const UserProvider = ({ children }) => {
 if(loading) return null
 
     return (
-        <UserContext.Provider value={{ login, logout, signUpUser, user }}>
+        <UserContext.Provider value={{ login, logout, signUpUser, user, userEmail, setUserEmail }}>
             { children }
         </UserContext.Provider>
     );
@@ -61,7 +61,6 @@ export const useCurrentUser = () => {
 
     if (context === undefined)
         throw new Error('use current user must be use with UserProvider');
-
         return context.user
 }
 
