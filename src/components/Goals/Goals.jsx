@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getGoals } from "../../services/getGoals";
 import { goalAddition } from "../../services/users";
 
+// pull
+
 export default function GoalsList() {
     const [goals, setGoals] = useState([]);
     const [goalInput, setGoalsInput] = useState('');
