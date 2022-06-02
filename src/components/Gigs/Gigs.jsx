@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom/cjs/react-router-dom.min";
 import { getGigs } from "../../services/gigs";
+import { data } from "../../utils/data";
 
 
 export default function GigsList() {
@@ -32,7 +33,7 @@ export default function GigsList() {
           })
     }
 
-
+    
     
     return (
         <>
