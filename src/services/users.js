@@ -82,6 +82,18 @@ const insertAllGigs = async () => {
         return res.body
     })
 )}
+
+export const updateGoal = async (goal) => {
+    const res = await fetch(`${process.env.API_URL}/api/v1/goals`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        mode: 'cors',
+        body: JSON.stringify(goal),
+
+    })
+    return res.body
+}
     
 
 // after back is fix look into bug in maybe how user state is being set
