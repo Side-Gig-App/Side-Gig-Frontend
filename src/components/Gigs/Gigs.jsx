@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useCurrentUser } from "../../context/UserProvider";
 import { getGigs } from "../../services/gigs";
 
 
+
 export default function GigsList() {
+    const user = useCurrentUser()
+    // console.log(user.profiles_id, 'usererrrr give us INFO');
     const { id } = useParams();
     const [gigsArray, setGigsArray] = useState([]);
 
@@ -18,20 +22,22 @@ export default function GigsList() {
     }, [])
 
 
-    async function favHandler(gigID, profiles_id) {
+    async function favHandler(gigID) {
         // console.log(e.target.value)
-        console.log(gigID);
-        await fetch(`${process.env.API_URL}/api/v1/favorites`, {
+        console.log(user.profiles_id, 'profiles infor ');
+        const res = await fetch(`${process.env.API_URL}/api/v1/favorites`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
             mode: 'cors',
             body: JSON.stringify({
               is_favorite: true,
+            //   profiles_id: user.profiles_id,
               gig_id: gigID,
-              profiles_id,
             }),
-          })
+        })
+        console.log(res, 'this is the information from the fav body');
+        return res.body
     }
 
     
@@ -43,7 +49,7 @@ export default function GigsList() {
                     <p>{gig.gig_name}</p>
                     <p>{gig.salary_hourly}</p>
                     <p>{gig.third_party_link}</p>
-                    <button onClick={() => favHandler(gig.gig_id, gig.profiles_id)}>Add To Favorites</button>
+                    <button onClick={() => favHandler(gig.gig_id)}>Add To Favorites</button>
                     <Link to={`/gigs/${gig.gig_id}`}>
                     <button>More Info</button>
                     </Link>

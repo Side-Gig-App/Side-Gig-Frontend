@@ -23,6 +23,19 @@ export const signUp = async ({ email, password }) => {
     if (!res.ok) throw new Error('Invalid Username or Password');
 
     return res.json();
+
+}
+export const goalAddition = async (goal) => {
+    const res = await fetch(`${process.env.API_URL}/api/v1/goals`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        mode: 'cors',
+        body: JSON.stringify(goal),
+    });
+    if (!res.ok) throw new Error('Invalid Username or Password');
+
+    return res.json();
 }
 
 // username or password here?
