@@ -7,6 +7,7 @@ export default function FavoritesList() {
     useEffect(() => {
         async function getFavoritesFromLoad() {
             const favs = await getFavorites();
+            console.log(favs, 'favs');
             setFavorites(favs);
         }
     getFavoritesFromLoad();
@@ -17,7 +18,7 @@ console.log('favs', favorites);
         <>
           {favorites.map((fav) => (
               <ul key={fav.gig_id}>
-                  <p>{fav.profiles_id}</p>
+                  <p>{fav.gig_name}</p>
               </ul>
           ))}
         </>
