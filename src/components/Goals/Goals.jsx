@@ -5,6 +5,7 @@ import { goalAddition, updateGoal } from "../../services/users";
 export default function GoalsList() {
     const [goals, setGoals] = useState([]);
     const [goalInput, setGoalsInput] = useState('');
+    const [bool, setBool] = useState(false)
 
     const callBack = useCallback(() => {
 
@@ -27,7 +28,8 @@ export default function GoalsList() {
     }, [])
 
   async function updateGoalHandler(goal_id) {
-      await updateGoal({ goal_id, goal_accomplished: true })
+      setBool(prevCheck => !prevCheck)
+      await updateGoal({ goal_id, goal_accomplished: bool })
 callBack()
 
 }
@@ -70,7 +72,7 @@ callBack()
               <ul key={goal.goal_id}>
                   <p>Goal Amount: {goal.goal_amount}</p>
                   <p>Accomplished: {goal.goal_accomplished ? 'true' : 'false'}</p>
-                  <button onClick={() => updateGoalHandler(goal.goal_id)}>Goal Finished</button>
+                  <button onClick={() => updateGoalHandler(goal.goal_id)}>{goal.goal_accomplished ? 'Goal Not Finished' : 'Goal Finished'}</button>
               </ul>
           ))}
           </div>
