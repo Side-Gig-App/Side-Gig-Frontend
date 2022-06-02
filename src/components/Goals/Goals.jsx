@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { getGoals } from "../../services/getGoals";
+import { goalAddition } from "../../services/users";
 
 export default function GoalsList() {
     const [goals, setGoals] = useState([]);
+    const [goalInput, setGoalsInput] = useState('');
 
     useEffect(() => {
         async function getGoalFromLoad() {
@@ -10,11 +12,20 @@ export default function GoalsList() {
             setGoals(fetchedGoals);
         }
         getGoalFromLoad();
-    }, [])
+    }, [goals])
 
     const addGoal = async (e) => {
-        e.target.value();
+        e.preventDefault();
+        // e.target.value();
         // const entry 
+        console.log(goalInput);
+        goals.push({
+            goal_id: 1,
+            goal_amount: goalInput,
+            goal_accomplished: false
+        })
+        console.log(goals);
+        // await goalAddition(goalInput)
     } 
     return (
         <>
@@ -22,14 +33,14 @@ export default function GoalsList() {
           {goals.map((goal) => (
               <ul key={goal.goal_id}>
                   <p>{goal.goal_amount}</p>
-                  <p>{goal.gol_accomplished}</p>
+                  <p>{goal.goal_accomplished}</p>
               </ul>
           ))}
           <div>
-              <form>
+              <form onSubmit={addGoal}>
                   <input 
-                  value={goals}
-                  onChange={(e) => setGoals(e.target.value)}
+                  value={goalInput}
+                  onChange={(e) => setGoalsInput(e.target.value)}
                   />
                   <button 
                   type='submit'
