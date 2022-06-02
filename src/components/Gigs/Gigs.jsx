@@ -26,7 +26,7 @@ export default function GigsList() {
         // console.log(e.target.value)
         console.log(user.profiles_id, 'profiles infor ');
         const res = await fetch(`${process.env.API_URL}/api/v1/favorites`, {
-            method: 'PATCH',
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
             mode: 'cors',
