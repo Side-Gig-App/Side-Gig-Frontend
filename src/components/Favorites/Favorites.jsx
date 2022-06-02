@@ -19,6 +19,9 @@ console.log('favs', favorites);
           {favorites.map((fav) => (
               <ul key={fav.gig_id}>
                   <p>{fav.gig_name}</p>
+                  <p>Hourly Pay: ${fav.salary_hourly}</p>
+                  <p>{fav.third_party_link}</p>
+                  <button>Sign Up for {fav.gig_name}</button>
               </ul>
           ))}
         </>
