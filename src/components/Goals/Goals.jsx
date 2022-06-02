@@ -28,7 +28,7 @@ export default function GoalsList() {
 
   async function updateGoalHandler(goal_id) {
       await updateGoal({ goal_id, goal_accomplished: true })
-
+callBack()
 
 }
 
