@@ -1,6 +1,5 @@
 import { data } from '../utils/data';
 
-
 export const getCurrentUser = async () => {
     try {
         const res = await fetch(`${process.env.API_URL}/api/v1/users`, {
@@ -40,20 +39,19 @@ export const goalAddition = async (goal) => {
 
 // username or password here?
 export const signIn = async ({ email, password }) => {
-    console.log('sign in ------function')
     const res = await fetch(`${process.env.API_URL}/api/v1/users/signin`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
         mode: 'cors',
         body: JSON.stringify({ email, password }),
-       
+        
     });
+    console.log('sign in ------function')
     let arr =[];
     const arr1 = insertAllGigs();
     arr.push(arr1)
     if (!res.ok) throw new Error('Invalid Username or Password');
-
     return res.json();
 };
 

@@ -12,22 +12,25 @@ export default function App() {
   return (
     <UserProvider>
     <Router>
-    <Switch>
-    <Route exact path='/login'>
-      <Authenticate />
-    </Route>
-    <PrivateRoute exact path='/comparison'>
-      <GigsList />
-    </PrivateRoute>
-    <PrivateRoute exact path='/gigs/:id'>
-      <GigDetail />
-    </PrivateRoute>
-    <PrivateRoute exact path='/goals'>
-      <GoalsList />
-    </PrivateRoute>
-    <PrivateRoute exact path='/favorites'>
-      <FavoritesList />
-    </PrivateRoute>
+      <Switch>
+        <Route exact path='/'>
+          <Redirect to='comparison' />
+        </Route>
+      <Route exact path='/login'>
+        <Authenticate />
+      </Route>
+      <Route path='/comparison'>
+        <GigsList />
+      </Route>
+      <PrivateRoute exact path='/gigs/:id'>
+        <GigDetail />
+      </PrivateRoute>
+      <PrivateRoute exact path='/goals'>
+        <GoalsList />
+      </PrivateRoute>
+      <PrivateRoute exact path='/favorites'>
+        <FavoritesList />
+      </PrivateRoute>
     </Switch>
     </Router>
     </UserProvider>
