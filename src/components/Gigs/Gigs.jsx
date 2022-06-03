@@ -40,19 +40,19 @@ export default function GigsList() {
         console.log(res, 'this is the information from the fav body');
         return res.body
     }
-
-    
     
     return (
         <>
             {gigsArray.map((gig) => (
               <div className={styles.gigCard}>
                 <ul key={gig.gig_id}>
+
                   <section className={styles.gigText}>
                     <p className={styles.textBlock}>Gig: {gig.gig_name}</p>
                     <p className={styles.textBlock}>Hourly Pay: ${gig.salary_hourly}</p>
                     <p className={styles.textBlock}>{gig.third_party_link}</p>
                     </section>
+
                     <button className={styles.button}onClick={() => favHandler(gig.gig_id)}>Add To Favorites</button>
 
                     <Link to={`/gigs/${gig.gig_id}`}>

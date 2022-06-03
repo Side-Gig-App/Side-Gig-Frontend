@@ -6,69 +6,7 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
-    background-image: repeating-linear-gradient(to right, rgb(88, 91, 241) , rgb(47, 211, 216), rgb(246, 171, 80));
-  
-
+  background-image: repeating-linear-gradient(to right, rgb(88, 91, 241) , rgb(47, 211, 216), rgb(246, 171, 80));
 }
-.bmburgerbutton {
-    position: fixed;
-    width: 48px;
-    height: 48px;
-    left: 36px;
-    top: 36px;
-    background: #ff5b0a;
-  }
-   
-  .bm-burger-bars-hover {
-    background: #304c29;
-  }
-  
-  .bm-cross-button {
-    height: 24px;
-    width: 24px;
-  }
-   
-  .bm-cross {
-    background: #bdc3c7;
-  }
-  
-  .bm-menu-wrap {
-    position: fixed;
-    height: 100%;
-    
-  }
-   
-  .menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #576f91;
-    padding: 2.5em 1.5em 0;
-    font-size: 50px;
-  }
-   
-  .bm-morph-shape {
-    fill: #3253e7;
-  }
-  
-  .bm-item-list {
-    color: #490606;
-    padding: 0.8em;
-    width:50px;
-  }
-   
-  .bm-item {
-    display: inline-block;
-  }
-   
-  .bm-overlay {
-    background: rgba(218, 35, 66, 0.3);
- 
-  }
-  .menu-button{
-      background-color: #ff5b0a;
-  }
-  .body{
-      background-color: #3253e7;
-  }
+
 
