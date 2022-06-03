@@ -2,8 +2,7 @@ import { Redirect, Route } from 'react-router-dom';
 import { useAuth, useCurrentUser } from '../../context/UserProvider';
 
 export default function PrivateRoute({ children, ...routeProps }) {
-  const user = useCurrentUser();
-  const { loading } = useAuth();
+  const { loading, user } = useAuth();
 
 if (loading) return (
   <p>...Loading</p>
