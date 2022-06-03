@@ -61,10 +61,8 @@ export default function Authenticate(){
 
            <button
                type='submit'
-               aria-label='submit-button'
-            //    onClick={handleClick}
-               >
-               Sign In
+               aria-label='submit-button'>
+               Sign  In
            </button>
        </form>
        <form onSubmit={handleSignUp}>
