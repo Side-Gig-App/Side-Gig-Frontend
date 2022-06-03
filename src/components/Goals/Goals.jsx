@@ -56,10 +56,12 @@ callBack()
           <h2 className={styles.heading}>Goals Page</h2>
        
           <div>
-              <form onSubmit={addGoal}>
+              <form onSubmit={addGoal} className={styles.form}>
                   <input 
                   value={goalInput}
                   onChange={(e) => setGoalsInput(e.target.value)}
+                  className={styles.input}
+                  placeholder='Enter Your Goal'
                   />
                   <button className={styles.button}
                   type='submit'
@@ -72,8 +74,10 @@ callBack()
           {goals.map((goal) => (
               <div className={styles.goalCard}>
               <ul key={goal.goal_id}>
+              <section className={styles.goalText}>
                   <p className={styles.textBlock}>Goal Amount: ${goal.goal_amount}</p>
                   <p className={styles.textBlock}>Accomplished: {goal.goal_accomplished ? 'true' : 'false'}</p>
+                  </section>
 
                   <button className={styles.button}onClick={() => updateGoalHandler(goal.goal_id)}>{goal.goal_accomplished ? 'Goal Not Finished' : 'Goal Finished'}</button>
               </ul>
