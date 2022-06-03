@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useCurrentUser } from "../../context/UserProvider";
 import { getGigs } from "../../services/gigs";
+
 // import { matchGigs } from "../../services/users";
+
+import styles from './Gigs.css'
+
 
 
 
@@ -45,21 +49,26 @@ export default function GigsList() {
         console.log(res, 'this is the information from the fav body');
         return res.body
     }
-
-    
     
     return (
         <>
             {gigsArray.map((gig) => (
+              <div className={styles.gigCard}>
                 <ul key={gig.gig_id}>
-                    <p>{gig.gig_name}</p>
-                    <p>{gig.salary_hourly}</p>
-                    <p>{gig.third_party_link}</p>
-                    <button onClick={() => favHandler(gig.gig_id)}>Add To Favorites</button>
+
+                  <section className={styles.gigText}>
+                    <p className={styles.textBlock}>Gig: {gig.gig_name}</p>
+                    <p className={styles.textBlock}>Hourly Pay: ${gig.salary_hourly}</p>
+                    <p className={styles.textBlock}>{gig.third_party_link}</p>
+                    </section>
+
+                    <button className={styles.button}onClick={() => favHandler(gig.gig_id)}>Add To Favorites</button>
+
                     <Link to={`/gigs/${gig.gig_id}`}>
-                    <button>More Info</button>
+                    <button className={styles.button}>More Info</button>
                     </Link>
                     </ul>
+                    </div>
             ))}
         </>
     )
