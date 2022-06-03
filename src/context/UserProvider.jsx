@@ -25,13 +25,25 @@ export const UserProvider = ({ children }) => {
     const signUpUser = async (credentials) => {
         try {
             await signUp(credentials);
-           const user =  await signIn(credentials)
-            console.log(user, 'user signup function------')
-            setUser(user);
+            await signInUser(credentials);
+           console.log(user, 'user signup function------')
         } catch (error) {
             throw error;
         }
     };
+
+
+    const signInUser = async (credentials) => {
+        try {
+           const user =  await signIn(credentials)
+           setUser(user);
+           setLoading(false);
+           console.log(user, 'user sigin function------')
+        } catch (error) {
+            throw error;
+        }
+    };
+
 
     const logout = useCallback(() => {
         signOut().then(() => setUser(null));
@@ -49,11 +61,11 @@ export const UserProvider = ({ children }) => {
     // );
 if(loading) return null
 
-    return (
-        <UserContext.Provider value={{ login, logout, signUpUser, user, userEmail, setUserEmail }}>
-            { children }
-        </UserContext.Provider>
-    );
+return (
+    <UserContext.Provider value={{ login, logout, signUpUser, user, userEmail, setUserEmail, loading, setLoading }}>
+        { children }
+    </UserContext.Provider>
+);
 };
 
 export const useCurrentUser = () => {
@@ -69,6 +81,8 @@ export const useAuth = () => {
 
     if ( context === undefined)
         throw new Error('useAuth mus be used in a userProvider')
-
-        return { logout: context.logout, login: context.login , signUpUser: context.signUpUser};
+const { logout, login, signUpUser, loading, setLoading } = context
+        return { logout, login, signUpUser, loading, setLoading };
 }
+
+
