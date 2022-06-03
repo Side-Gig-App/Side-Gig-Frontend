@@ -32,6 +32,7 @@ export const UserProvider = ({ children }) => {
         }
     };
 
+
     const signInUser = async (credentials) => {
         try {
            const user =  await signIn(credentials)
@@ -42,6 +43,8 @@ export const UserProvider = ({ children }) => {
             throw error;
         }
     };
+
+
     const logout = useCallback(() => {
         signOut().then(() => setUser(null));
     }, []);
@@ -52,14 +55,17 @@ export const UserProvider = ({ children }) => {
           .finally(() => setLoading(false));
     }, []);
 
-
+    // const state = useMemo(
+    //     () => ({ loading, user, logout, login }),
+    //     [loading, user, logout, login]
+    // );
 if(loading) return null
 
-    return (
-        <UserContext.Provider value={{ login, logout, signUpUser, user, userEmail, setUserEmail, loading, setLoading }}>
-            { children }
-        </UserContext.Provider>
-    );
+return (
+    <UserContext.Provider value={{ login, logout, signUpUser, user, userEmail, setUserEmail, loading, setLoading }}>
+        { children }
+    </UserContext.Provider>
+);
 };
 
 export const useCurrentUser = () => {
@@ -75,6 +81,8 @@ export const useAuth = () => {
 
     if ( context === undefined)
         throw new Error('useAuth mus be used in a userProvider')
+
 const { logout, login, signUpUser, loading, setLoading, user } = context
         return { logout, login, signUpUser, loading, setLoading, user };
 }
+
