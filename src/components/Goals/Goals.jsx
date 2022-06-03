@@ -56,9 +56,15 @@ callBack()
           <h2 className={styles.heading}>Goals Page</h2>
        
           <div>
+
+              <form onSubmit={addGoal}>
+                  <input
+                  type='number'
+
               <form onSubmit={addGoal} className={styles.form}>
 
                   <input 
+
                   value={goalInput}
                   onChange={(e) => setGoalsInput(e.target.value)}
                   className={styles.input}
