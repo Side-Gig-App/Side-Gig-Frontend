@@ -4,6 +4,11 @@ import { useCurrentUser } from "../../context/UserProvider";
 import { getGigs } from "../../services/gigs";
 import { getFavorites } from "../../services/getFavorites";
 
+// import { matchGigs } from "../../services/users";
+
+import styles from './Gigs.css'
+
+
 
 
 export default function GigsList() {
@@ -27,7 +32,12 @@ export default function GigsList() {
         async function getGigsFromLoad() {
             const gigs = await getGigs();
             setGigsArray(gigs);
-            console.log(gigs);
+
+            // const apiData = await matchGigs({ gig_name: 'uber' })
+            // console.log(apiData, 'thisbis data from, apI');
+            // const newArr = gigsArray.map((gig) => {
+            //     [ ...gig, gig.salary_hourly: apiData  ]
+            // })
       }
     getGigsFromLoad();
     }, [])
@@ -53,16 +63,21 @@ export default function GigsList() {
     return (
         <>
             {gigsArray.map((gig) => (
+              <div className={styles.gigCard}>
                 <ul key={gig.gig_id}>
-                    <p>{gig.gig_name}</p>
-                    <p>{gig.salary_hourly}</p>
-                    <p>{gig.third_party_link}</p>
-                    {/* <p>{favorites.gig_id && 'In favorites'}</p> */}
-                    <button onClick={() => favHandler(gig.gig_id)}>Add</button>
+
+                  <section className={styles.gigText}>
+                    <p className={styles.textBlock}>Gig: {gig.gig_name}</p>
+                    <p className={styles.textBlock}>Hourly Pay: ${gig.salary_hourly}</p>
+                    <p className={styles.textBlock}>{gig.third_party_link}</p>
+                    </section>
+
+                    <button className={styles.button}onClick={() => favHandler(gig.gig_id)}>Add To Favorites</button>
                     <Link to={`/gigs/${gig.gig_id}`}>
-                    <button>More Info</button>
+                    <button className={styles.button}>More Info</button>
                     </Link>
                     </ul>
+                    </div>
             ))}
         </>
     )
