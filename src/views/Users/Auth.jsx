@@ -25,38 +25,24 @@ export default function Authenticate(){
        }
    };
 
-   const handleClick = (e) => {
-       e.preventDefault();
 
-       if (!email || !password) {
-           setError('Enter valid username and Password')
-       }else{
-           setError('');
-           handleSubmit(e)
-       }
-   };
-
-   const handleSignUp = async (e) => {
-       try{
-           e.preventDefault();
-           
-           await signUpUser({ email: email1, password: password1 });
+    
+    const handleSignUp = async (e) => {
+        e.preventDefault();
+        try{
+            if (!email1 || !password1) {
+                return alert('Enter valid username and Password')
+                
+            }
+            await signUpUser({ email: email1, password: password1 });
+            console.log('hello there');
+            history.replace('/comparison');
 
        }catch(error){
            setError(error.message)
        }
    };
 
-   const handleClickForSignUp = (e) => {
-       e.preventDefault();
-
-       if (!email1 || !password1) {
-           setError('Enter valid username and Password')
-       }else{
-           setError('');
-           handleSignUp(e)
-       }
-   };
 
    return(
     <><form onSubmit={handleSubmit} className={styles.form}>
@@ -82,8 +68,7 @@ export default function Authenticate(){
            <button
                type='submit'
                className={styles.button}
-               aria-label='submit-button'
-               onClick={handleClick}>
+               aria-label='submit-button' />
                Sign In
            </button>
        </form>
@@ -110,7 +95,6 @@ export default function Authenticate(){
                    type='submit'
                    className={styles.button}
                    aria-label='submit-button'
-                   onClick={handleClickForSignUp}>
                    Sign Up
                </button>
            </form></>

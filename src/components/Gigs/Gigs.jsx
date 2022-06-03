@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useCurrentUser } from "../../context/UserProvider";
 import { getGigs } from "../../services/gigs";
+import { getFavorites } from "../../services/getFavorites";
 
 // import { matchGigs } from "../../services/users";
 
@@ -13,8 +14,17 @@ import styles from './Gigs.css'
 export default function GigsList() {
     const user = useCurrentUser()
     // console.log(user.profiles_id, 'usererrrr give us INFO');
-    const { id } = useParams();
     const [gigsArray, setGigsArray] = useState([]);
+    // const [favorites, setFavorites] = useState([]);
+
+    // useEffect(() => {
+    //     async function getFavoritesFromLoad() {
+    //         const favs = await getFavorites();
+    //         console.log(favs, 'favs');
+    //         setFavorites(favs);
+    //     }
+    // getFavoritesFromLoad();
+    // }, [])
 
     
 
@@ -22,6 +32,7 @@ export default function GigsList() {
         async function getGigsFromLoad() {
             const gigs = await getGigs();
             setGigsArray(gigs);
+
             // const apiData = await matchGigs({ gig_name: 'uber' })
             // console.log(apiData, 'thisbis data from, apI');
             // const newArr = gigsArray.map((gig) => {
@@ -31,10 +42,9 @@ export default function GigsList() {
     getGigsFromLoad();
     }, [])
 
-
     async function favHandler(gigID) {
         // console.log(e.target.value)
-        console.log(user.profiles_id, 'profiles infor ');
+        console.log(user, 'profiles infor ');
         const res = await fetch(`${process.env.API_URL}/api/v1/favorites`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -63,7 +73,6 @@ export default function GigsList() {
                     </section>
 
                     <button className={styles.button}onClick={() => favHandler(gig.gig_id)}>Add To Favorites</button>
-
                     <Link to={`/gigs/${gig.gig_id}`}>
                     <button className={styles.button}>More Info</button>
                     </Link>
