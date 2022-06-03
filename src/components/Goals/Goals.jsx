@@ -57,10 +57,14 @@ callBack()
        
           <div>
 
+              <form onSubmit={addGoal}>
+                  <input
+                  type='number'
+
               <form onSubmit={addGoal} className={styles.form}>
 
                   <input 
-                  type='number'
+
                   value={goalInput}
                   onChange={(e) => setGoalsInput(e.target.value)}
                   className={styles.input}
@@ -78,7 +82,7 @@ callBack()
           {goals.map((goal) => (
               <div className={styles.goalCard}>
               <ul key={goal.goal_id}>
-
+                  
               <section className={styles.goalText}>
                   <p className={styles.textBlock}>Goal Amount: ${goal.goal_amount}</p>
                   <p className={styles.textBlock}>Accomplished: {goal.goal_accomplished ? 'true' : 'false'}</p>
