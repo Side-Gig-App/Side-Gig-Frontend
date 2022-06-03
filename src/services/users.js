@@ -93,6 +93,17 @@ export const updateGoal = async (goal) => {
     return res.body
 }
     
+export const deleteFavorite = async () => {
+    const res = await fetch(`${process.env.API_URL}/api/v1/favorites`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        mode: 'cors',
+        body: JSON.stringify(),
+
+    })
+    return res.body
+}
 
 // after back is fix look into bug in maybe how user state is being set
 
