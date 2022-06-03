@@ -7,6 +7,7 @@ import FavoritesList from './components/Favorites/Favorites';
 import Header from './components/Header/Header';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import GoalsList from './components/Goals/Goals';
+import './App.css'
 
 
 export default function App() {
