@@ -24,16 +24,7 @@ export default function Authenticate(){
        }
    };
 
-//    const handleClick = (e) => {
-//        e.preventDefault();
 
-//        if (!email || !password) {
-//            setError('Enter valid username and Password')
-//         }else{
-//             setError('');
-//             handleSubmit(e)
-//         }
-//     };
     
     const handleSignUp = async (e) => {
         e.preventDefault();
@@ -50,18 +41,6 @@ export default function Authenticate(){
        }
    };
 
-//    const handleClickForSignUp = (e) => {
-//        e.preventDefault();
-
-//        if (!email1 || !password1) {
-//            setError('Enter valid username and Password')
-           
-//            history.replace('/comparison');
-//        }else{
-//            setError('');
-//            handleSignUp(e)
-//        }
-//    };
 
    return(
     <><form onSubmit={handleSubmit} className={styles.form}>

@@ -27,7 +27,7 @@ console.log('favs', favorites);
                   </section>
                   <button className={styles.button}>Sign Up for {fav.gig_name} 
                   </button>
-                 
+               
               </ul>
               </div>
           ))}
