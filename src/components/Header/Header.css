@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    background-color: rgb(196, 229, 212);
+    /* background-image: repeating-linear-gradient(to left, rgb(88, 91, 241) , rgb(47, 211, 216), rgb(246, 171, 80)); */
 
   }
   .logo{
