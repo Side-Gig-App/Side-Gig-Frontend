@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getFavorites } from "../../services/getFavorites";
-import { deleteFavorite } from "../../services/users";
+import styles from './Favorites.css'
+
 export default function FavoritesList() {
     const [favorites, setFavorites] = useState([]);
 
@@ -17,13 +18,18 @@ console.log('favs', favorites);
     return (
         <>
           {favorites.map((fav) => (
+              <div className={styles.favCard}>
               <ul key={fav.gig_id}>
-                  <p>{fav.gig_name}</p>
-                  <p>Hourly Pay: ${fav.salary_hourly}</p>
-                  <p>{fav.third_party_link}</p>
-                  <button>Sign Up for {fav.gig_name}</button>
-                  <button onClick={deleteFavorite}>Delete from favorites</button>
+                  <section className={styles.textBlock}>
+                  <p className={styles.textBlock}>Gig: {fav.gig_name}</p>
+                  <p className={styles.textBlock}>Hourly Pay: ${fav.salary_hourly}</p>
+                  <p className={styles.textBlock}>{fav.third_party_link}</p>
+                  </section>
+                  <button className={styles.button}>Sign Up for {fav.gig_name} 
+                  </button>
+               
               </ul>
+              </div>
           ))}
         </>
     )
