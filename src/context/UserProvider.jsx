@@ -75,6 +75,6 @@ export const useAuth = () => {
 
     if ( context === undefined)
         throw new Error('useAuth mus be used in a userProvider')
-const { logout, login, signUpUser, loading, setLoading } = context
-        return { logout, login, signUpUser, loading, setLoading };
+const { logout, login, signUpUser, loading, setLoading, user } = context
+        return { logout, login, signUpUser, loading, setLoading, user };
 }
