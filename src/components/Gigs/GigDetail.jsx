@@ -29,7 +29,7 @@ console.log(gigId[0])
             <section className={styles.detailText}>
         <h1 className={styles.textBlock}>{gigId[0]?.gig_name}</h1>
         <h2 className={styles.textBlock}>{gigId[0]?.salary_hourly}</h2>
-        <p className={styles.textBlock}>{gigId[0]?.third_party_link}</p>
+        <h3 className={styles.textBlock}>{gigId[0]?.third_party_link}</h3>
         </section>
         </div>
         </>

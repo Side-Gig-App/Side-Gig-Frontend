@@ -20,13 +20,11 @@ console.log('favs', favorites);
           {favorites.map((fav) => (
               <div className={styles.favCard}>
               <ul key={fav.gig_id}>
-
                   <section className={styles.textBlock}>
                   <p className={styles.textBlock}>Gig: {fav.gig_name}</p>
                   <p className={styles.textBlock}>Hourly Pay: ${fav.salary_hourly}</p>
                   <p className={styles.textBlock}>{fav.third_party_link}</p>
                   </section>
-               
                   <button className={styles.button}>Sign Up for {fav.gig_name} 
                   </button>
                  

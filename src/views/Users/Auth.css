@@ -1,0 +1,29 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom:10px;
+    color:white;
+}
+.input{
+    width:200px;
+    height:25px;
+    margin:5px;
+    border-radius:5px;
+    box-shadow: 0.25em 0.25em 0.5em #3d3d3d,
+    -0.05em -0.05em 0.15em #d3d3d3;
+}
+.button{
+    border-color:rgb(255, 255, 255);
+    color: white;
+    font-size: 15px;
+    border-width:2px;
+    width:150px;
+    height:50px;
+    background-color: rgba(255, 255, 255, 0);
+    margin:10px;
+    border-radius: 25px;
+    text-emphasis-color: white;
+    box-shadow: 0.25em 0.25em 0.5em #3d3d3d,
+    -0.05em -0.05em 0.15em #d3d3d3;
+}
