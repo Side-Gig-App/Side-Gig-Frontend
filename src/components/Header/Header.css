@@ -1,13 +1,15 @@
 .header {
-    width: 100%;
+    width: 110%;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    background-color: rgb(196, 229, 212);
+
   }
   .logo{
     height:140px;
     width: 140px;
     justify-content: center;
     align-self: center;
-    margin-left:30%;
   }

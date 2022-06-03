@@ -28,6 +28,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@chakra-ui/menu": "^2.0.2",
     "burger-menu": "^1.0.13",
     "react": "^17.0.2",
     "react-burger-menu": "^2.7.1",

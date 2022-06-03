@@ -10,25 +10,34 @@ import GoalsList from './components/Goals/Goals';
 import { slide as Menu } from 'react-burger-menu';
 import styles from './App.css';
 
+
+
 export default function App() {
+
  
 
   return (
 
     <UserProvider>
-          <Header />
     <Router>
- 
-      <Menu className={styles.menu} width={280} height={200}>
-      
+    <Header />
+    {/* <button className={styles.bmburgerbutton}>Nav</button> */}
+    {/* <Menu className={styles.menu} width={280} height={200}>
         <section>
-          <button id='menu-button'>
+      
+      
+          <button >
           <NavLink to='/comparison' className='bm-burger-bars'>Compare Gigs</NavLink>
           </button>
+          <button>
           <NavLink to='/goals' className='bm-burger-button'>Goals</NavLink>
+          </button>
+          <button>
           <NavLink to='/login' className='bm-burger-button'>Sign Out</NavLink>
+          </button>
         </section>
-      </Menu>
+        </Menu> */}
+    
    
     <Switch>
     <Route exact path='/login'>

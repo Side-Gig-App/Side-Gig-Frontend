@@ -1,9 +1,21 @@
 
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  /* background-color: #a5e4ef9e; */
 
+    background-image: linear-gradient(to bottom, rgb(6, 10, 245) , rgb(100, 202, 206), rgb(156, 38, 130));
+  
+
+}
 .bmburgerbutton {
     position: fixed;
-    width: 36px;
-    height: 30px;
+    width: 48px;
+    height: 48px;
     left: 36px;
     top: 36px;
     background: #ff5b0a;
@@ -23,26 +35,26 @@
   }
   
   .bm-menu-wrap {
-  
     position: fixed;
     height: 100%;
+    
   }
    
   .menu {
     display: flex;
     justify-content: center;
-    align-items: left;
-    background: #b4d4ac;
+    align-items: center;
+    background: #576f91;
     padding: 2.5em 1.5em 0;
-    font-size: 1.15em;
+    font-size: 50px;
   }
    
   .bm-morph-shape {
-    fill: #373a47;
+    fill: #3253e7;
   }
   
   .bm-item-list {
-    color: #b8b7ad;
+    color: #490606;
     padding: 0.8em;
     width:50px;
   }
@@ -52,8 +64,13 @@
   }
    
   .bm-overlay {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(218, 35, 66, 0.3);
+ 
   }
   .menu-button{
       background-color: #ff5b0a;
   }
+  .body{
+      background-color: #3253e7;
+  }
+
