@@ -49,9 +49,9 @@ export const signIn = async ({ email, password }) => {
         body: JSON.stringify({ email, password }),
        
     });
-    let arr =[];
-    const arr1 = insertAllGigs();
-    arr.push(arr1)
+    // let arr =[];
+    // const arr1 = insertAllGigs();
+    // arr.push(arr1)
     if (!res.ok) throw new Error('Invalid Username or Password');
 
     return res.json();
@@ -90,6 +90,18 @@ export const updateGoal = async (goal) => {
         credentials: 'include',
         mode: 'cors',
         body: JSON.stringify(goal),
+
+    })
+    return res.body
+}
+
+export const matchGigs = async (gig_name) => {
+    const res = await fetch(`${process.env.API_URL}/api/v1/comparison/gigs`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        mode: 'cors',
+        body: JSON.stringify(gig_name),
 
     })
     return res.body

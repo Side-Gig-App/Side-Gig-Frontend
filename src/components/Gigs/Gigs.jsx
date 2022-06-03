@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useCurrentUser } from "../../context/UserProvider";
 import { getGigs } from "../../services/gigs";
+// import { matchGigs } from "../../services/users";
 
 
 
@@ -17,6 +18,11 @@ export default function GigsList() {
         async function getGigsFromLoad() {
             const gigs = await getGigs();
             setGigsArray(gigs);
+            // const apiData = await matchGigs({ gig_name: 'uber' })
+            // console.log(apiData, 'thisbis data from, apI');
+            // const newArr = gigsArray.map((gig) => {
+            //     [ ...gig, gig.salary_hourly: apiData  ]
+            // })
       }
     getGigsFromLoad();
     }, [])

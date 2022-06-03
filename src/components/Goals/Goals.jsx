@@ -56,7 +56,8 @@ callBack()
        
           <div>
               <form onSubmit={addGoal}>
-                  <input 
+                  <input
+                  type='number'
                   value={goalInput}
                   onChange={(e) => setGoalsInput(e.target.value)}
                   />
