@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useAuth, useCurrentUser } from '../../context/UserProvider'
 import styles from './Auth.css'
 
@@ -10,15 +10,16 @@ export default function Authenticate(){
     const [email1, setEmail1] = useState('');
     const [password1, setPassword1] = useState('');
     const [error, setError] = useState('');
-
     const history = useHistory();
+    const user = useCurrentUser();
     const { login, signUpUser } = useAuth();
 
    const handleSubmit = async (e) => {
        try{
            e.preventDefault();
-           await login({ email: email, password: password }) 
-           history.replace('/comparison')
+           console.log('line 19 authjsx')
+           await login({ email: email, password: password });
+
        }catch(error){
            setError(error.message)
        }
@@ -36,6 +37,7 @@ export default function Authenticate(){
             await signUpUser({ email: email1, password: password1 });
             console.log('hello there');
             history.replace('/comparison');
+
        }catch(error){
            setError(error.message)
        }
@@ -67,8 +69,6 @@ export default function Authenticate(){
                type='submit'
                className={styles.button}
                aria-label='submit-button'
-            //    onClick={handleClick}
-               >
                Sign In
            </button>
        </form>
@@ -95,8 +95,6 @@ export default function Authenticate(){
                    type='submit'
                    className={styles.button}
                    aria-label='submit-button'
-                //    onClick={handleClickForSignUp}
-                   >
                    Sign Up
                </button>
            </form></>
