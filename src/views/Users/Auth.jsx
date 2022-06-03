@@ -23,16 +23,7 @@ export default function Authenticate(){
        }
    };
 
-//    const handleClick = (e) => {
-//        e.preventDefault();
 
-//        if (!email || !password) {
-//            setError('Enter valid username and Password')
-//         }else{
-//             setError('');
-//             handleSubmit(e)
-//         }
-//     };
     
     const handleSignUp = async (e) => {
         e.preventDefault();
