@@ -94,8 +94,8 @@ export default function Authenticate(){
                <button
                    type='submit'
                    className={styles.button}
-                   aria-label='submit-button'
-                   Sign Up >
+                   aria-label='submit-button' >
+                   Sign Up
                </button>
            </form></>
    )
