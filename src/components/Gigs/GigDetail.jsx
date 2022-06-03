@@ -1,6 +1,7 @@
 import { useEffect, useState} from "react"
 import { useParams } from "react-router-dom/cjs/react-router-dom.min"
 import { getGigs } from "../../services/gigs"
+import styles from './GigDetail.css'
 
 
 
@@ -24,10 +25,13 @@ const { id } = useParams()
 console.log(gigId[0])
     return (
         <>
-        
-        <h1>{gigId[0]?.gig_name}</h1>
-        <h2>{gigId[0]?.salary_hourly}</h2>
-        <p>{gigId[0]?.third_party_link}</p>
+        <div className={styles.detailCard}>
+            <section className={styles.detailText}>
+        <h1 className={styles.textBlock}>{gigId[0]?.gig_name}</h1>
+        <h2 className={styles.textBlock}>{gigId[0]?.salary_hourly}</h2>
+        <h3 className={styles.textBlock}>{gigId[0]?.third_party_link}</h3>
+        </section>
+        </div>
         </>
     )
 }
