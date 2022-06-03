@@ -40,18 +40,6 @@ export default function Authenticate(){
        }
    };
 
-//    const handleClickForSignUp = (e) => {
-//        e.preventDefault();
-
-//        if (!email1 || !password1) {
-//            setError('Enter valid username and Password')
-           
-//            history.replace('/comparison');
-//        }else{
-//            setError('');
-//            handleSignUp(e)
-//        }
-//    };
 
    return(
     <><form onSubmit={handleSubmit}>
