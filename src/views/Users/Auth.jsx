@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useAuth, useCurrentUser } from '../../context/UserProvider'
 import styles from './Auth.css'
 
@@ -10,53 +10,58 @@ export default function Authenticate(){
     const [email1, setEmail1] = useState('');
     const [password1, setPassword1] = useState('');
     const [error, setError] = useState('');
+
     const history = useHistory();
-    const user = useCurrentUser();
     const { login, signUpUser } = useAuth();
 
    const handleSubmit = async (e) => {
        try{
            e.preventDefault();
-           console.log('line 19 authjsx')
-           await login({ email: email, password: password });
-
+           await login({ email: email, password: password }) 
+           history.replace('/comparison')
        }catch(error){
            setError(error.message)
        }
    };
 
-   const handleClick = (e) => {
-       e.preventDefault();
+//    const handleClick = (e) => {
+//        e.preventDefault();
 
-       if (!email || !password) {
-           setError('Enter valid username and Password')
-       }else{
-           setError('');
-           handleSubmit(e)
+//        if (!email || !password) {
+//            setError('Enter valid username and Password')
+//         }else{
+//             setError('');
+//             handleSubmit(e)
+//         }
+//     };
+    
+    const handleSignUp = async (e) => {
+        e.preventDefault();
+        try{
+            if (!email1 || !password1) {
+                return alert('Enter valid username and Password')
+                
+            }
+            await signUpUser({ email: email1, password: password1 });
+            console.log('hello there');
+            history.replace('/comparison');
+       }catch(error){
+           setError(error.message)
        }
    };
 
-   const handleSignUp = async (e) => {
-       try{
-           e.preventDefault();
+//    const handleClickForSignUp = (e) => {
+//        e.preventDefault();
+
+//        if (!email1 || !password1) {
+//            setError('Enter valid username and Password')
            
-           await signUpUser({ email: email1, password: password1 });
-
-       }catch(error){
-           setError(error.message)
-       }
-   };
-
-   const handleClickForSignUp = (e) => {
-       e.preventDefault();
-
-       if (!email1 || !password1) {
-           setError('Enter valid username and Password')
-       }else{
-           setError('');
-           handleSignUp(e)
-       }
-   };
+//            history.replace('/comparison');
+//        }else{
+//            setError('');
+//            handleSignUp(e)
+//        }
+//    };
 
    return(
     <><form onSubmit={handleSubmit} className={styles.form}>
@@ -83,7 +88,8 @@ export default function Authenticate(){
                type='submit'
                className={styles.button}
                aria-label='submit-button'
-               onClick={handleClick}>
+            //    onClick={handleClick}
+               >
                Sign In
            </button>
        </form>
@@ -110,7 +116,8 @@ export default function Authenticate(){
                    type='submit'
                    className={styles.button}
                    aria-label='submit-button'
-                   onClick={handleClickForSignUp}>
+                //    onClick={handleClickForSignUp}
+                   >
                    Sign Up
                </button>
            </form></>
