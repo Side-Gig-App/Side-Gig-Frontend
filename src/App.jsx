@@ -14,7 +14,7 @@ export default function App() {
     <Router>
       <Switch>
         <Route exact path='/'>
-          <Redirect to='comparison' />
+          <Redirect to='login' />
         </Route>
       <Route exact path='/login'>
         <Authenticate />

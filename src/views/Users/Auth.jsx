@@ -9,33 +9,30 @@ export default function Authenticate(){
     const [email1, setEmail1] = useState('');
     const [password1, setPassword1] = useState('');
     const [error, setError] = useState('');
-    
+
     const history = useHistory();
-    const location = useLocation();
-    const user = useCurrentUser();
     const { login, signUpUser } = useAuth();
 
    const handleSubmit = async (e) => {
        try{
            e.preventDefault();
            await login({ email: email, password: password }) 
-           const url = location.search.origin ? location.search.pathname : '/comparison';
-           history.replace()
+           history.replace('/comparison')
        }catch(error){
            setError(error.message)
        }
    };
 
-   const handleClick = (e) => {
-       e.preventDefault();
+//    const handleClick = (e) => {
+//        e.preventDefault();
 
-       if (!email || !password) {
-           setError('Enter valid username and Password')
-        }else{
-            setError('');
-            handleSubmit(e)
-        }
-    };
+//        if (!email || !password) {
+//            setError('Enter valid username and Password')
+//         }else{
+//             setError('');
+//             handleSubmit(e)
+//         }
+//     };
     
     const handleSignUp = async (e) => {
         e.preventDefault();
@@ -52,18 +49,18 @@ export default function Authenticate(){
        }
    };
 
-   const handleClickForSignUp = (e) => {
-       e.preventDefault();
+//    const handleClickForSignUp = (e) => {
+//        e.preventDefault();
 
-       if (!email1 || !password1) {
-           setError('Enter valid username and Password')
+//        if (!email1 || !password1) {
+//            setError('Enter valid username and Password')
            
-           history.replace('/comparison');
-       }else{
-           setError('');
-           handleSignUp(e)
-       }
-   };
+//            history.replace('/comparison');
+//        }else{
+//            setError('');
+//            handleSignUp(e)
+//        }
+//    };
 
    return(
     <><form onSubmit={handleSubmit}>
