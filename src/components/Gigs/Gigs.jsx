@@ -47,7 +47,6 @@ export default function GigsList() {
         <>
             {gigsArray.map((gig) => (
               <div className={styles.gigCard}>
-                
                 <ul key={gig.gig_id}>
                   <section className={styles.gigText}>
                     <p className={styles.textBlock}>Gig: {gig.gig_name}</p>
