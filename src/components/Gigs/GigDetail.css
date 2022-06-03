@@ -1,9 +1,10 @@
 
 
-.favCard{
+.detailCard{
     display: flex;
     color: white;
-    font-size: 1px;
+    font-size: 19px;
+    height:175px;
     flex-direction: row;
     justify-content: center;
     border: 1px;
@@ -14,7 +15,7 @@
     margin-bottom:7px;
 
     }
-    .favText{
+    .detailText{
         display: flex;
         flex-direction: row;
         justify-content: center;
