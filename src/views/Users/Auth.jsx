@@ -68,7 +68,7 @@ export default function Authenticate(){
            <button
                type='submit'
                className={styles.button}
-               aria-label='submit-button' />
+               aria-label='submit-button' >
                Sign In
            </button>
        </form>
@@ -95,7 +95,7 @@ export default function Authenticate(){
                    type='submit'
                    className={styles.button}
                    aria-label='submit-button'
-                   Sign Up
+                   Sign Up >
                </button>
            </form></>
    )
